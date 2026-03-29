@@ -6,16 +6,14 @@
     <title>LeThe Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* --- GIAO DIỆN HIỆN ĐẠI (LETHE THEME) --- */
         :root {
             --bg-color: #0d1117; 
             --card-bg: #161b22;   
             --text-primary: #c9d1d9; 
-            --accent-color: #2dd4bf; /* Màu xanh Teal cực đẹp */
+            --accent-color: #2dd4bf; 
             --border-color: #30363d; 
             --glow-color: rgba(45, 212, 191, 0.3);
             --font-stack: 'Fira Code', monospace;
-            --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -45,23 +43,21 @@
         .main-container { width: 100%; max-width: 450px; padding: 20px; text-align: center; }
 
         header h1 {
-            font-size: 3.5rem; /* Cỡ chữ lớn cho tên LeThe */
+            font-size: 3.5rem;
             color: var(--accent-color);
             margin-bottom: 10px;
             min-height: 1.2em;
             letter-spacing: 3px;
-            font-weight: 500;
         }
 
         header p { color: #8b949e; margin-bottom: 40px; font-size: 0.9rem; }
 
-        /* Card RustDesk */
         .card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 35px;
-            transition: var(--transition-smooth);
+            transition: all 0.4s ease;
             text-align: left;
         }
 
@@ -87,7 +83,6 @@
 
         .card-body p { color: #8b949e; margin-bottom: 30px; line-height: 1.6; }
 
-        /* Nút Download */
         .btn {
             display: flex;
             align-items: center;
@@ -99,7 +94,7 @@
             background: transparent;
             color: var(--accent-color);
             border: 1px solid var(--accent-color);
-            transition: 0.3s ease;
+            transition: 0.3s;
         }
 
         .btn:hover {
@@ -107,9 +102,7 @@
             color: var(--bg-color);
         }
 
-        .arrow { margin-left: 10px; transition: 0.3s; }
-        .btn:hover .arrow { transform: translateY(3px); }
-
+        .arrow { margin-left: 10px; }
     </style>
 </head>
 <body>
@@ -129,7 +122,7 @@
             </div>
             <div class="card-body">
                 <p>Tải xuống file APK để bắt đầu kết nối với thiết bị của bạn.</p>
-                <a href="RustDesk Remote Desktop_1.4.2.apk" download class="btn">
+                <a href="RustDesk.apk" download class="btn">
                     DOWNLOAD APK <span class="arrow">↓</span>
                 </a>
             </div>
@@ -137,7 +130,6 @@
     </div>
 
     <script>
-        // Hiệu ứng gõ chữ cho tên "LeThe"
         const text = "LeThe"; 
         const titleElement = document.getElementById('title');
         let i = 0;
@@ -146,11 +138,10 @@
             if (i < text.length) {
                 titleElement.innerHTML += text.charAt(i);
                 i++;
-                setTimeout(typeWriter, 150); // Tốc độ gõ chữ
+                setTimeout(typeWriter, 150);
             }
         }
 
-        // Chạy hiệu ứng khi trang load xong
         window.onload = typeWriter;
     </script>
 
