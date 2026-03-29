@@ -10,10 +10,12 @@
             --bg-color: #0d1117; 
             --card-bg: #161b22;   
             --text-primary: #c9d1d9; 
-            --accent-color: #2dd4bf; 
+            --text-secondary: #8b949e;
+            --accent-color: #2dd4bf; /* Teal */
             --border-color: #30363d; 
             --glow-color: rgba(45, 212, 191, 0.3);
             --font-stack: 'Fira Code', monospace;
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,8 +27,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh; /* Changed from height to min-height for scrolling */
+            padding: 40px 0; /* Add top/bottom padding for mobile */
+            overflow-x: hidden;
         }
 
         .background-grid {
@@ -48,29 +51,38 @@
             margin-bottom: 10px;
             min-height: 1.2em;
             letter-spacing: 3px;
+            font-weight: 500;
         }
 
-        header p { color: #8b949e; margin-bottom: 40px; font-size: 0.9rem; }
+        header p { color: var(--text-secondary); margin-bottom: 50px; font-size: 0.9rem; }
+
+        /* Card System */
+        .cards-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 25px; /* Space between cards */
+        }
 
         .card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 35px;
-            transition: all 0.4s ease;
+            padding: 30px;
+            transition: var(--transition-smooth);
             text-align: left;
+            position: relative;
         }
 
         .card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             border-color: var(--accent-color);
-            box-shadow: 0 15px 40px var(--glow-color);
+            box-shadow: 0 12px 30px var(--glow-color);
         }
 
         .card-header {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .status-dot {
@@ -78,23 +90,40 @@
             background-color: var(--accent-color);
             border-radius: 50%;
             margin-right: 15px;
-            box-shadow: 0 0 10px var(--accent-color);
+            box-shadow: 0 0 8px var(--accent-color);
         }
 
-        .card-body p { color: #8b949e; margin-bottom: 30px; line-height: 1.6; }
+        .card-body p { 
+            color: var(--text-secondary); 
+            font-size: 0.95rem;
+            line-height: 1.6; 
+            margin-bottom: 25px;
+        }
 
+        /* Warning text for JJSploit */
+        .warning-text {
+            color: #fca5a5; /* Red color */
+            font-weight: 500;
+            border-left: 3px solid #ef4444;
+            padding-left: 10px;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+        }
+
+        /* Common Button Style */
         .btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 15px;
+            padding: 14px;
             border-radius: 10px;
             text-decoration: none;
             font-weight: bold;
             background: transparent;
             color: var(--accent-color);
             border: 1px solid var(--accent-color);
-            transition: 0.3s;
+            transition: 0.3s ease;
+            font-size: 0.9rem;
         }
 
         .btn:hover {
@@ -102,7 +131,9 @@
             color: var(--bg-color);
         }
 
-        .arrow { margin-left: 10px; }
+        .icon { margin-left: 10px; transition: 0.3s; }
+        .btn:hover .icon { transform: scale(1.1); }
+
     </style>
 </head>
 <body>
@@ -115,19 +146,38 @@
             <p>Hệ thống điều khiển Cloud Phone từ xa</p>
         </header>
 
-        <div class="card">
-            <div class="card-header">
-                <div class="status-dot"></div>
-                <h2>RustDesk Remote</h2>
+        <div class="cards-wrapper">
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="status-dot"></div>
+                    <h2>RustDesk Remote</h2>
+                </div>
+                <div class="card-body">
+                    <p>Tải xuống file APK để bắt đầu kết nối với thiết bị của bạn.</p>
+                    <a href="RustDesk.apk" download class="btn">
+                        DOWNLOAD APK <span class="icon">↓</span>
+                    </a>
+                </div>
             </div>
-            <div class="card-body">
-                <p>Tải xuống file APK để bắt đầu kết nối với thiết bị của bạn.</p>
-                <a href="RustDesk.apk" download class="btn">
-                    DOWNLOAD APK <span class="arrow">↓</span>
-                </a>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="status-dot"></div>
+                    <h2>JJSploit Android</h2>
+                </div>
+                <div class="card-body">
+                    <div class="warning-text">
+                        [LƯU Ý] Khuyên ae chỉ nên sử dụng JJSploit trên Cloud Phone.
+                    </div>
+                    <p>Truy cập link tải JJSploit Android từ WeAreDevs.</p>
+                    <a href="https://wearedevs.net/d/JJSploit-Android#google_vignette" target="_blank" rel="noopener noreferrer" class="btn">
+                        OPEN DOWNLOAD LINK <span class="icon">↗</span>
+                    </a>
+                </div>
             </div>
-        </div>
-    </div>
+
+        </div> </div>
 
     <script>
         const text = "LeThe"; 
