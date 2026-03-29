@@ -1,0 +1,170 @@
+:root {
+    --bg-color: #0d1117; 
+    --card-bg: #161b22;   
+    --text-primary: #c9d1d9; 
+    --yellow-accent: #fbbf24; 
+    --border-color: #30363d; 
+    --glow-yellow: rgba(251, 191, 36, 0.3);
+    --font-stack: 'Fira Code', monospace;
+    --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-stack);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+.background-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(var(--border-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.15;
+    z-index: -1;
+}
+
+.main-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+/* --- Đã sửa đổi phần này để căn giữa 1 thẻ duy nhất --- */
+.single-card-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    width: 100%;
+    max-width: 450px; /* Giữ cho thẻ không bị phình to quá */
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+#rustdesk-card:hover {
+    box-shadow: 0 10px 30px var(--glow-yellow);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.status-icon {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.status-icon.yellow { background-color: var(--yellow-accent); box-shadow: 0 0 10px var(--yellow-accent); }
+
+.card-header h2 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.card-body {
+    font-size: 1rem;
+    color: #8b949e;
+    margin-bottom: 30px;
+    flex-grow: 1;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    width: 100%;
+    transition: var(--transition-smooth);
+    border: 1px solid transparent;
+}
+
+.btn-yellow {
+    background-color: transparent;
+    color: var(--yellow-accent);
+    border-color: var(--yellow-accent);
+}
+
+.btn-yellow:hover {
+    background-color: var(--yellow-accent);
+    color: var(--bg-color);
+    box-shadow: 0 0 15px var(--yellow-accent);
+}
+
+.btn .arrow {
+    margin-left: 10px;
+    transition: var(--transition-smooth);
+}
+
+.btn:hover .arrow {
+    transform: translateY(3px); /* Đổi hướng mũi tên đi xuống cho hợp lý với việc tải file */
+}
+
+footer {
+    text-align: center;
+    padding-top: 40px;
+    margin-top: 60px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    color: #484f58;
+}
+
+.time-stamp {
+    color: var(--border-color);
+}

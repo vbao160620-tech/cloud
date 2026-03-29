@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Phone Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* --- GIAO DIỆN HIỆN ĐẠI --- */
+        :root {
+            --bg-color: #0d1117; 
+            --card-bg: #161b22;   
+            --text-primary: #c9d1d9; 
+            --accent-color: #2dd4bf; 
+            --border-color: #30363d; 
+            --glow-color: rgba(45, 212, 191, 0.3);
+            --font-stack: 'Fira Code', monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-stack);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .background-grid {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(var(--border-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .main-container { width: 100%; max-width: 450px; padding: 20px; text-align: center; }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            min-height: 1.2em;
+        }
+
+        header p { color: #8b949e; margin-bottom: 40px; font-size: 0.9rem; }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 35px;
+            transition: all 0.4s ease;
+            text-align: left;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+            box-shadow: 0 15px 40px var(--glow-color);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .status-dot {
+            width: 10px; height: 10px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            margin-right: 15px;
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
+        .card-body p { color: #8b949e; margin-bottom: 30px; line-height: 1.5; }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            background: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        .arrow { margin-left: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="background-grid"></div>
+
+    <div class="main-container">
+        <header>
+            <h1 id="title"></h1>
+            <p>Hệ thống điều khiển Cloud Phone từ xa</p>
+        </header>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="status-dot"></div>
+                <h2>RustDesk Remote</h2>
+            </div>
+            <div class="card-body">
+                <p>Tải xuống file APK để bắt đầu kết nối với thiết bị của bạn.</p>
+                <a href="RustDesk Remote Desktop_1.4.2.apk" download class="btn">
+                    DOWNLOAD APK <span class="arrow">↓</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // SỬA TẠI ĐÂY: Đổi nội dung thành Cloud Phone
+        const text = "Cloud Phone"; 
+        const titleElement = document.getElementById('title');
+        let i = 0;
+
+        function typeWriter() {
+            if (i < text.length) {
+                titleElement.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 120);
+            }
+        }
+
+        window.onload = typeWriter;
+    </script>
+
+</body>
+</html>
