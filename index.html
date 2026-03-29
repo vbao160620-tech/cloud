@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LeThe Dashboard</title>
+    <title>LeThe Dashboard - Premium</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
+        /* --- GIAO DIỆN PREMIUM (LETHE THEME) --- */
         :root {
             --bg-color: #0d1117; 
             --card-bg: #161b22;   
@@ -13,9 +14,9 @@
             --text-secondary: #8b949e;
             --accent-color: #2dd4bf; /* Teal */
             --border-color: #30363d; 
-            --glow-color: rgba(45, 212, 191, 0.3);
+            --glow-color: rgba(45, 212, 191, 0.4);
             --font-stack: 'Fira Code', monospace;
-            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -27,11 +28,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; /* Changed from height to min-height for scrolling */
-            padding: 40px 0; /* Add top/bottom padding for mobile */
+            min-height: 100vh;
+            padding: 40px 0;
             overflow-x: hidden;
         }
 
+        /* Lưới nền công nghệ */
         .background-grid {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -43,96 +45,206 @@
             z-index: -1;
         }
 
-        .main-container { width: 100%; max-width: 450px; padding: 20px; text-align: center; }
+        .main-container { width: 100%; max-width: 480px; padding: 20px; text-align: center; }
 
-        header h1 {
-            font-size: 3.5rem;
+        /* --- ANIMATION TIÊU ĐỀ "LETHE" SIÊU ĐẸP --- */
+        header { margin-bottom: 60px; position: relative; }
+
+        .brand-title {
+            font-size: 4.5rem; /* Cỡ chữ lớn, ấn tượng */
             color: var(--accent-color);
-            margin-bottom: 10px;
-            min-height: 1.2em;
-            letter-spacing: 3px;
             font-weight: 500;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
         }
 
-        header p { color: var(--text-secondary); margin-bottom: 50px; font-size: 0.9rem; }
+        /* Hiệu ứng tỏa sáng nhẹ cho tiêu đề */
+        .brand-title::after {
+            content: 'LETHE';
+            position: absolute;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            color: var(--accent-color);
+            filter: blur(15px);
+            opacity: 0.5;
+            z-index: -1;
+            animation: titleGlow 4s infinite alternate;
+        }
+
+        /* Chia nhỏ tiêu đề để animation từng chữ */
+        .brand-title span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(30px) scale(0.8) blur(10px);
+            animation: fadeUpIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+
+        /* Độ trễ cho từng chữ cái L-E-T-H-E */
+        .brand-title span:nth-child(1) { animation-delay: 0.2s; }
+        .brand-title span:nth-child(2) { animation-delay: 0.4s; }
+        .brand-title span:nth-child(3) { animation-delay: 0.6s; }
+        .brand-title span:nth-child(4) { animation-delay: 0.8s; }
+        .brand-title span:nth-child(5) { animation-delay: 1.0s; }
+
+        @keyframes fadeUpIn {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1) blur(0);
+            }
+        }
+
+        @keyframes titleGlow {
+            0% { filter: blur(15px); opacity: 0.5; }
+            100% { filter: blur(25px); opacity: 0.8; }
+        }
+
+        /* --- END ANIMATION TIÊU ĐỀ --- */
 
         /* Card System */
         .cards-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 25px; /* Space between cards */
+            gap: 30px;
+            /* Animation cho toàn bộ card container */
+            opacity: 0;
+            transform: translateY(40px);
+            animation: cardsAppear 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            animation-delay: 1.5s; /* Xuất hiện sau khi tiêu đề xong */
+        }
+
+        @keyframes cardsAppear {
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 30px;
+            border-radius: 20px;
+            padding: 35px;
             transition: var(--transition-smooth);
             text-align: left;
             position: relative;
+            overflow: hidden;
         }
 
+        /* Hiệu ứng lưới nhỏ bên trong card khi hover */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(var(--border-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0;
+            transition: 0.5s;
+            z-index: 0;
+        }
+
+        .card:hover::before { opacity: 0.05; }
+
         .card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-12px) scale(1.02);
             border-color: var(--accent-color);
-            box-shadow: 0 12px 30px var(--glow-color);
+            box-shadow: 0 20px 50px var(--glow-color);
         }
 
         .card-header {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            position: relative; z-index: 1;
         }
 
         .status-dot {
-            width: 10px; height: 10px;
+            width: 12px; height: 12px;
             background-color: var(--accent-color);
             border-radius: 50%;
-            margin-right: 15px;
-            box-shadow: 0 0 8px var(--accent-color);
+            margin-right: 18px;
+            box-shadow: 0 0 10px var(--accent-color);
+            position: relative;
         }
+        
+        /* Hiệu ứng mạch đập cho Status Dot */
+        .status-dot::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            animation: pulse 2s infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+
+        .card-body { position: relative; z-index: 1; }
 
         .card-body p { 
             color: var(--text-secondary); 
-            font-size: 0.95rem;
-            line-height: 1.6; 
-            margin-bottom: 25px;
+            font-size: 1rem;
+            line-height: 1.7; 
+            margin-bottom: 30px;
         }
 
-        /* Warning text for JJSploit */
+        /* Văn bản lưu ý JJSploit */
         .warning-text {
-            color: #fca5a5; /* Red color */
+            color: #fca5a5; /* Red nhẹ */
             font-weight: 500;
+            background: rgba(239, 68, 68, 0.1);
             border-left: 3px solid #ef4444;
-            padding-left: 10px;
+            padding: 15px;
+            border-radius: 8px;
             margin-bottom: 25px;
             font-size: 0.9rem;
+            line-height: 1.5;
         }
 
-        /* Common Button Style */
+        /* Common Button Style Premium */
         .btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 14px;
-            border-radius: 10px;
+            padding: 16px;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: bold;
             background: transparent;
             color: var(--accent-color);
             border: 1px solid var(--accent-color);
             transition: 0.3s ease;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative; overflow: hidden;
         }
+
+        /* Hiệu ứng quét sáng khi hover button */
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(45, 212, 191, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::after { left: 100%; }
 
         .btn:hover {
             background-color: var(--accent-color);
             color: var(--bg-color);
+            box-shadow: 0 5px 15px var(--glow-color);
         }
 
-        .icon { margin-left: 10px; transition: 0.3s; }
-        .btn:hover .icon { transform: scale(1.1); }
+        .icon { margin-left: 12px; transition: 0.3s; font-size: 1.1rem; }
+        .btn:hover .icon { transform: translate(3px, -3px) scale(1.1); }
 
     </style>
 </head>
@@ -142,9 +254,10 @@
 
     <div class="main-container">
         <header>
-            <h1 id="title"></h1>
-            <p>Hệ thống điều khiển Cloud Phone từ xa</p>
-        </header>
+            <div class="brand-title">
+                <span>L</span><span>E</span><span>T</span><span>H</span><span>E</span>
+            </div>
+            </header>
 
         <div class="cards-wrapper">
             
@@ -168,9 +281,9 @@
                 </div>
                 <div class="card-body">
                     <div class="warning-text">
-                        [LƯU Ý] Khuyên ae chỉ nên sử dụng JJSploit trên Cloud Phone.
+                        [LƯU Ý CANH BÁO] Khuyên ae chỉ nên sử dụng JJSploit trên Cloud Phone để đảm bảo an toàn.
                     </div>
-                    <p>Truy cập link tải JJSploit Android từ WeAreDevs.</p>
+                    <p>Truy cập link tải JJSploit Android chính thức.</p>
                     <a href="https://wearedevs.net/d/JJSploit-Android#google_vignette" target="_blank" rel="noopener noreferrer" class="btn">
                         OPEN DOWNLOAD LINK <span class="icon">↗</span>
                     </a>
@@ -178,22 +291,6 @@
             </div>
 
         </div> </div>
-
-    <script>
-        const text = "LeThe"; 
-        const titleElement = document.getElementById('title');
-        let i = 0;
-
-        function typeWriter() {
-            if (i < text.length) {
-                titleElement.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 150);
-            }
-        }
-
-        window.onload = typeWriter;
-    </script>
 
 </body>
 </html>
