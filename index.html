@@ -159,6 +159,11 @@
             position: relative; z-index: 1;
         }
 
+        /* Bỏ margin-bottom cho card-header của thẻ Delta để nút bấm liền lên trên */
+        .card-header.no-margin {
+            margin-bottom: 0;
+        }
+
         .status-dot {
             width: 12px; height: 12px;
             background-color: var(--accent-color);
@@ -223,6 +228,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             position: relative; overflow: hidden;
+            margin-top: 20px;
         }
 
         /* Hiệu ứng quét sáng khi hover button */
@@ -268,7 +274,7 @@
                 </div>
                 <div class="card-body">
                     <p>Tải xuống file APK để bắt đầu kết nối với thiết bị của bạn.</p>
-                    <a href="RustDesk.apk" download class="btn">
+                    <a href="RustDesk.apk" download class="btn" style="margin-top: 0;">
                         DOWNLOAD APK <span class="icon">↓</span>
                     </a>
                 </div>
@@ -284,19 +290,18 @@
                         [LƯU Ý CẢNH BÁO] Khuyên ae chỉ nên sử dụng JJSploit trên Cloud Phone để đảm bảo an toàn.
                     </div>
                     <p>Truy cập link tải JJSploit Android chính thức từ WeAreDevs.</p>
-                    <a href="https://wearedevs.net/d/JJSploit-Android#google_vignette" target="_blank" rel="noopener noreferrer" class="btn">
+                    <a href="https://wearedevs.net/d/JJSploit-Android#google_vignette" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 0;">
                         OPEN DOWNLOAD LINK <span class="icon">↗</span>
                     </a>
                 </div>
             </div>
 
             <div class="card">
-                <div class="card-header">
+                <div class="card-header no-margin">
                     <div class="status-dot"></div>
                     <h2>Delta</h2>
                 </div>
                 <div class="card-body">
-                    <p>Truy cập link tải Delta Android chính thức từ WeAreDevs.</p>
                     <a href="https://wearedevs.net/d/Delta" target="_blank" rel="noopener noreferrer" class="btn">
                         OPEN DOWNLOAD LINK <span class="icon">↗</span>
                     </a>
