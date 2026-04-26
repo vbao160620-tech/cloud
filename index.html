@@ -47,11 +47,11 @@
 
         .main-container { width: 100%; max-width: 480px; padding: 20px; text-align: center; }
 
-        /* --- ANIMATION TIÊU ĐỀ "LETHE" SIÊU ĐẸP --- */
+        /* --- ANIMATION TIÊU ĐỀ "LETHE" --- */
         header { margin-bottom: 60px; position: relative; }
 
         .brand-title {
-            font-size: 4.5rem; /* Cỡ chữ lớn, ấn tượng */
+            font-size: 4.5rem;
             color: var(--accent-color);
             font-weight: 500;
             letter-spacing: 5px;
@@ -61,7 +61,6 @@
             margin-bottom: 20px;
         }
 
-        /* Hiệu ứng tỏa sáng nhẹ cho tiêu đề */
         .brand-title::after {
             content: 'LETHE';
             position: absolute;
@@ -74,7 +73,6 @@
             animation: titleGlow 4s infinite alternate;
         }
 
-        /* Chia nhỏ tiêu đề để animation từng chữ */
         .brand-title span {
             display: inline-block;
             opacity: 0;
@@ -82,7 +80,6 @@
             animation: fadeUpIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
         }
 
-        /* Độ trễ cho từng chữ cái L-E-T-H-E */
         .brand-title span:nth-child(1) { animation-delay: 0.2s; }
         .brand-title span:nth-child(2) { animation-delay: 0.4s; }
         .brand-title span:nth-child(3) { animation-delay: 0.6s; }
@@ -101,18 +98,15 @@
             100% { filter: blur(25px); opacity: 0.8; }
         }
 
-        /* --- END ANIMATION TIÊU ĐỀ --- */
-
-        /* Card System */
+        /* --- Card System --- */
         .cards-wrapper {
             display: flex;
             flex-direction: column;
             gap: 30px;
-            /* Animation cho toàn bộ card container */
             opacity: 0;
             transform: translateY(40px);
             animation: cardsAppear 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-            animation-delay: 1.5s; /* Xuất hiện sau khi tiêu đề xong */
+            animation-delay: 1.5s;
         }
 
         @keyframes cardsAppear {
@@ -130,7 +124,6 @@
             overflow: hidden;
         }
 
-        /* Hiệu ứng lưới nhỏ bên trong card khi hover */
         .card::before {
             content: '';
             position: absolute;
@@ -159,11 +152,6 @@
             position: relative; z-index: 1;
         }
 
-        /* Bỏ margin-bottom cho card-header để nút bấm liền lên trên */
-        .card-header.no-margin {
-            margin-bottom: 0;
-        }
-
         .status-dot {
             width: 12px; height: 12px;
             background-color: var(--accent-color);
@@ -173,7 +161,6 @@
             position: relative;
         }
         
-        /* Hiệu ứng mạch đập cho Status Dot */
         .status-dot::after {
             content: '';
             position: absolute;
@@ -198,20 +185,18 @@
             margin-bottom: 30px;
         }
 
-        /* Văn bản lưu ý JJSploit */
         .warning-text {
-            color: #fca5a5; /* Red nhẹ */
+            color: #fca5a5;
             font-weight: 500;
             background: rgba(239, 68, 68, 0.1);
             border-left: 3px solid #ef4444;
             padding: 15px;
             border-radius: 8px;
-            margin-bottom: 20px; /* Đã chỉnh lại khoảng cách */
+            margin-bottom: 20px;
             font-size: 0.9rem;
             line-height: 1.5;
         }
 
-        /* Common Button Style Premium */
         .btn {
             display: flex;
             align-items: center;
@@ -228,10 +213,8 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             position: relative; overflow: hidden;
-            margin-top: 20px;
         }
 
-        /* Hiệu ứng quét sáng khi hover button */
         .btn::after {
             content: '';
             position: absolute;
@@ -274,7 +257,7 @@
                 </div>
                 <div class="card-body">
                     <p>Tải xuống file APK để bắt đầu kết nối với thiết bị của bạn.</p>
-                    <a href="RustDesk.apk" download class="btn" style="margin-top: 0;">
+                    <a href="RustDesk.apk" download class="btn">
                         DOWNLOAD APK <span class="icon">↓</span>
                     </a>
                 </div>
@@ -289,25 +272,14 @@
                     <div class="warning-text">
                         [LƯU Ý CẢNH BÁO] Khuyên ae chỉ nên sử dụng JJSploit trên Cloud Phone để đảm bảo an toàn.
                     </div>
-                    <a href="https://wearedevs.net/d/JJSploit-Android#google_vignette" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 0;">
+                    <a href="https://wearedevs.net/d/JJSploit-Android#google_vignette" target="_blank" rel="noopener noreferrer" class="btn">
                         OPEN DOWNLOAD LINK <span class="icon">↗</span>
                     </a>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-header no-margin">
-                    <div class="status-dot"></div>
-                    <h2>Delta</h2>
-                </div>
-                <div class="card-body">
-                    <a href="https://wearedevs.net/d/Delta" target="_blank" rel="noopener noreferrer" class="btn">
-                        OPEN DOWNLOAD LINK <span class="icon">↗</span>
-                    </a>
-                </div>
-            </div>
-
-        </div> </div>
+        </div>
+    </div>
 
 </body>
 </html>
